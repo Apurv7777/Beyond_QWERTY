@@ -5,4 +5,6 @@
   - [Python](https://www.hackerrank.com/certificates/8713868db695)
 - [X] Task-4: SQL Certification
   - [SQL](https://www.hackerrank.com/certificates/1b4103ba82c6)
+- [X] Task-5: Python and SQL Interview questions
+  - [Colab](https://colab.research.google.com/drive/11BO4RiGAHL2Ea20i05khoOJX1fCtrSJy?usp=sharing)
 
