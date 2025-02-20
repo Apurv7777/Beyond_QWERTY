@@ -1,19 +1,26 @@
-require("dotenv").config();
 const express = require("express");
-const swaggerUi = require("swagger-ui-express");
-const YAML = require("yamljs");
+const dotenv = require("dotenv");
 const authRoutes = require("./routes/authRoutes");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
-
-// Load Swagger Docs
-const swaggerDocument = YAML.load("./docs/swagger.yaml");
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-// Routes
 app.use("/api", authRoutes);
 
-// Start Server
+// Swagger Setup
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: "3.0.0",
+        info: { title: "Auth API", version: "1.0.0", description: "Authentication API" },
+    },
+    apis: ["./routes/authRoutes.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
