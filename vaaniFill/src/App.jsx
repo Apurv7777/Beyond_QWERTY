@@ -4,7 +4,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import FormEditor from "./components/FormEditor";
-import FillForm from "./components/FillForm";
+import FormFill from "./components/FormFill";
 import FormResponses from "./components/FormResponses";
 import Home from "./components/Home";
 
@@ -59,7 +59,7 @@ const App = () => {
                 <Route path="/login" element={<Login setStatus={setStatus}/>} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/form/:id" element={<FormEditor />} />
-                <Route path="/fill-form/:id" element={<FillForm />} />
+                <Route path="/fill-form/:id" element={<FormFill />} />
                 <Route path="/responses/:id" element={<FormResponses />} />
             </Routes>
         </Router>
