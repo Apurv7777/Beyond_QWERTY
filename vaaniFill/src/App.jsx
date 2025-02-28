@@ -23,7 +23,7 @@ const App = () => {
     const handleLogout = () => {
         localStorage.removeItem('token'); // Remove the token from local storage
         setStatus(false);
-        window.location.href = '/login'; // Navigate to the login page
+        window.location.href = '/'; // Navigate to the login page
     };
 
     return (
