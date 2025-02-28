@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { FiPlus } from "react-icons/fi";
 import axios from "axios";
 
 const FormEditor = () => {
@@ -20,24 +21,25 @@ const FormEditor = () => {
         setFields(fields.filter((_, i) => i !== index));
     };
 
+    const isFormValid = () => {
+        return formName.trim() !== "" && fields.length > 0 && fields.every(field => field.name.trim() !== "");
+    };
+
     const handleSubmit = async () => {
         try {
             const token = localStorage.getItem("token");
-
             if (!token) {
                 alert("User not authenticated. Please log in.");
                 return;
             }
 
             const formData = { id, formName, fields };
-
-            await axios.post("http://localhost:5000/api/forms/save-form", 
-                formData,
-                { headers: { Authorization: `Bearer ${token}` } }
-            );
+            await axios.post("http://localhost:5000/api/forms/save-form", formData, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
             alert("Form saved successfully!");
-            navigate("/dashboard"); 
+            navigate("/dashboard");
         } catch (error) {
             console.error("Error saving form:", error.response ? error.response.data : error);
             alert("Failed to save form. Check the console for details.");
@@ -45,35 +47,37 @@ const FormEditor = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
-            <h2 className="text-2xl font-bold mb-4 text-center">Create Form</h2>
-            <input 
-                type="text" 
-                placeholder="Form Name" 
-                value={formName} 
-                onChange={(e) => setFormName(e.target.value)} 
-                className="w-full p-2 mb-4 border border-gray-300 rounded"
-            />
-            <button 
-                onClick={addField} 
-                className="w-full bg-blue-500 text-white py-2 px-4 rounded mb-4 hover:bg-blue-600"
-            >
-                Add Field
-            </button>
+        <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-xl mt-10">
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Create Form</h2>
+            <div className="flex items-center space-x-2 mb-4">
+                <input 
+                    type="text" 
+                    placeholder="Form Name" 
+                    value={formName} 
+                    onChange={(e) => setFormName(e.target.value)} 
+                    className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                />
+                <button 
+                    onClick={addField} 
+                    className="bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition flex items-center space-x-2"
+                >
+                    <FiPlus className="text-xl" />
+                </button>
+            </div>
 
             {fields.map((field, index) => (
-                <div key={index} className="mb-4 p-4 border border-gray-200 rounded">
+                <div key={index} className="flex items-center space-x-2 mb-4 p-2 border border-gray-200 rounded-lg bg-gray-50">
                     <input 
                         type="text" 
                         placeholder="Field Name" 
                         value={field.name} 
                         onChange={(e) => handleFieldChange(index, "name", e.target.value)} 
-                        className="w-full p-2 mb-2 border border-gray-300 rounded"
+                        className="flex-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
                     />
                     <select 
                         value={field.type} 
                         onChange={(e) => handleFieldChange(index, "type", e.target.value)} 
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
                     >
                         <option value="text">Text</option>
                         <option value="number">Number</option>
@@ -81,19 +85,24 @@ const FormEditor = () => {
                         <option value="email">Email</option>
                         <option value="password">Password</option>
                         <option value="date">Date</option>
+                        <option value="checkbox">Checkbox</option>
+                        <option value="radio">Radio</option>
+                        <option value="select">Dropdown</option>
+                        <option value="file">File Upload</option>
                     </select>
                     <button 
                         onClick={() => deleteField(index)} 
-                        className="w-full bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 mt-2"
+                        className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition"
                     >
-                        Delete Field
+                        Delete
                     </button>
                 </div>
             ))}
 
             <button 
                 onClick={handleSubmit} 
-                className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                disabled={!isFormValid()}
+                className={`w-full py-3 rounded-lg transition ${!isFormValid() ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 text-white hover:bg-green-700'}`}
             >
                 Save Form
             </button>
