@@ -34,7 +34,7 @@ const FormEditor = () => {
             }
 
             const formData = { id, formName, fields };
-            await axios.post("http://localhost:5000/api/forms/save-form", formData, {
+            await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/forms/save-form`, formData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
