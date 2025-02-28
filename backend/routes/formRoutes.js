@@ -88,6 +88,22 @@ router.get("/responses/:id", authMiddleware, async (req, res) => {
     }
 });
 
+// 📌 GET /form-creators — Fetch usernames of form creators
+router.get("/form-creators", authMiddleware, async (req, res) => {
+    try {
+        const query = `
+            SELECT users.username 
+            FROM users 
+            INNER JOIN forms ON users.id = forms.user_id
+        `;
+        const result = await db.query(query);
+        res.json(result.rows);
+    } catch (error) {
+        console.error("Database error:", error);
+        res.status(500).json({ message: "Error fetching form creators" });
+    }
+});
+
 // 📌 Submit Form Data
 router.post("/submit", authMiddleware, async (req, res) => {
     const { formName, responses } = req.body;
