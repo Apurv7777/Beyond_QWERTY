@@ -21,10 +21,36 @@ const Login = ({ setStatus }) => {
         }
     }, []);
 
+    const autoCorrectValue = (value, type) => {
+        value = value.trim(); // Remove unnecessary spaces
+
+        if (type === "email") {
+            // Ensure there is exactly one '@'
+            if (!value.includes("@")) {
+                value += "@gmail.com"; // Default to Gmail if no domain is provided
+            } else {
+                let [local, domain] = value.split("@");
+
+                // If domain is missing or malformed, default to "gmail.com"
+                if (!domain || !domain.includes(".")) {
+                    domain = "gmail.com";
+                } else {
+                    // Auto-correct common mistakes like "gmailcom", "yahoocom", etc.
+                    domain = domain.replace(/(gmail|yahoo|outlook|hotmail|icloud|aol|protonmail|zoho|yandex)com$/i, "$1.com");
+                }
+
+                value = `${local}@${domain}`;
+            }
+        }
+
+        return value;
+    };
+
     const handleVoiceInput = async (fieldName) => {
         if (!listening[fieldName]) {
             const recorder = await startRecording((text) => {
-                setUser((prev) => ({ ...prev, [fieldName]: text }));
+                const correctedValue = autoCorrectValue(text, fieldName);
+                setUser((prev) => ({ ...prev, [fieldName]: correctedValue }));
             }, (isListening) => {
                 setListening((prev) => ({ ...prev, [fieldName]: isListening }));
             },fieldName);
@@ -102,7 +128,7 @@ const Login = ({ setStatus }) => {
                         >
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </button>
-                    </div>
+                    </div> 
 
                     {/* Submit Button */}
                     <div>
