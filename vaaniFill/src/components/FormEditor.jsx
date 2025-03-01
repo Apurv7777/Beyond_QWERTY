@@ -7,7 +7,7 @@ const FormEditor = () => {
     const { id } = useParams();      
     const [formName, setFormName] = useState("");
     const [fields, setFields] = useState([]);
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const addField = () => {
         setFields([...fields, { name: "", type: "text", options: [] }]);
