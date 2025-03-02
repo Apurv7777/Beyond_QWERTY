@@ -6,6 +6,7 @@ const swaggerUi = require("swagger-ui-express");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/authRoutes");
 const formRoutes = require("./routes/formRoutes");
+const aiRoutes = require("./routes/aiRoutes");
 
 dotenv.config();
 const app = express();
@@ -16,7 +17,7 @@ app.use(bodyParser.json());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/forms", formRoutes);
-
+app.use("/api", aiRoutes);
 
 // Load Swagger Docs
 const swaggerDocument = YAML.load("./docs/swagger.yaml");
