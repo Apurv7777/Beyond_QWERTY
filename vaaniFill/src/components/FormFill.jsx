@@ -196,14 +196,14 @@ const FormFill = () => {
     };    
     
 
-    if (!form) return <p className="text-center text-gray-500">Loading form...</p>;
+    if (!form) return <p className="text-center min-h-[83vh] text-white font-bold">Loading form...</p>;
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-            <div className="max-w-2xl w-full bg-white p-6 shadow-lg rounded-lg">
-                <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">{form.form_name}</h2>
+        <div className="flex items-center justify-center min-h-[83vh] bg-transparent p-4">
+            <div className="max-w-2xl w-full bg-transparent p-6 shadow-2xl shadow-black rounded-lg">
+                <h2 className="text-3xl font-bold text-white text-center mb-6">{form.form_name}</h2>
                 
-                <div className="mb-6 p-4 border border-gray-300 rounded-lg bg-gray-50">
+                <div className="mb-6 p-4 border border-gray-300 rounded-lg bg-transparent">
                     <div className="flex items-center space-x-2 mt-4">
                         <input
                             type="text"
@@ -232,7 +232,7 @@ const FormFill = () => {
 
                 {form.fields.map((field, index) => (
                     <div key={index} className="mb-4">
-                        <label className="block text-lg font-medium text-gray-700 mb-2">{field.name}:</label>
+                        <label className="block text-lg font-medium text-white-700 mb-2">{field.name}:</label>
                         <div className="flex items-center space-x-2">
                             <input
                                 type={field.type}
