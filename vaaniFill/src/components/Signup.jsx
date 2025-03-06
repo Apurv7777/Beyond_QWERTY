@@ -76,9 +76,9 @@ const Signup = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-[90vh] bg-gray-100">
-            <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
-                <h2 className="text-2xl font-bold text-center text-gray-900">Signup</h2>
+        <div className="flex items-center rounded-2xl justify-center min-h-[83vh] bg-gradient-to-br from-green-400 via-blue-500 to-purple-600">
+            <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-lg bg-gradient-to-br from-blue-400 via-purple-400">
+                <h2 className="text-3xl font-bold text-center text-gray-900">Signup</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
                     <div className="relative flex items-center">
@@ -90,7 +90,7 @@ const Signup = () => {
                             placeholder="Username"
                             onChange={handleChange}
                             required
-                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
                         />
                         <button
                             type="button"
@@ -110,7 +110,7 @@ const Signup = () => {
                             placeholder="Email"
                             onChange={handleChange}
                             required
-                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
                         />
                         <button
                             type="button"
@@ -131,7 +131,7 @@ const Signup = () => {
                             placeholder="Password"
                             onChange={handleChange}
                             required
-                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
                         />
                         <button
                             type="button"
@@ -152,7 +152,7 @@ const Signup = () => {
                     <div>
                         <button
                             type="submit"
-                            className="w-full px-4 py-2 cursor-pointer font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                            className="cursor-pointer w-full px-4 py-2 font-medium text-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-md hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
                         >
                             Signup
                         </button>
