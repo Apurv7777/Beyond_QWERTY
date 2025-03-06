@@ -19,7 +19,7 @@ const App = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         setStatus(false);
-        window.location.href = '/login';
+        window.location.href = '/';
     };
 
     return (
