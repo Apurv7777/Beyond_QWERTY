@@ -64,7 +64,6 @@ const Dashboard = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 
-                // Convert array into a dictionary for quick lookup
                 const creatorMap = {};
                 response.data.forEach(user => {
                     creatorMap[user.id] = user.username;
@@ -101,8 +100,8 @@ const Dashboard = () => {
         }
     };
 
-    if (loading) return <p className="text-center text-gray-500">Loading...</p>;
-    if (error) return <p className="text-center text-red-500">{error}</p>;
+    if (loading) return <p className="text-center min-h-[83vh] text-white font-bold">Loading...</p>;
+    if (error) return <p className="text-center text-red-500 font-bold">{error}</p>;
 
     const createNewForm = async () => {
         const newFormId = crypto.randomUUID();
@@ -110,40 +109,40 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 min-h-[83vh]">
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Your Forms</h2>
+                <h2 className="text-2xl font-bold text-white-700">Your Forms</h2>
                 <button
                     onClick={createNewForm}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center"
+                    className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-md hover:from-purple-700 hover:to-pink-700 flex items-center"
                 >
                     <FaPlus className="mr-2" /> Create New Form
                 </button>
             </div>
             {forms.length === 0 ? (
-                <p className="text-gray-500">No forms found.</p>
+                <p className="text-white font-bold">No forms found.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {forms.map((form) => (
-                        <div key={form.form_id} className="border border-gray-300 p-4 rounded-2xl shadow-lg">
-                            <h3 className="text-xl font-semibold">{form.form_name}</h3>
-                            <p className="text-gray-500">Created: {new Date(form.created_at).toLocaleString()}</p>
+                        <div key={form.form_id} className="border border-gray-300 p-4 bg-transparent rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <h3 className="text-xl font-semibold text-white-700">{form.form_name}</h3>
+                            <p className="text-white-500">Created: {new Date(form.created_at).toLocaleString()}</p>
                             <div className="mt-2 flex space-x-2">
                                 <button
                                     onClick={() => navigate(`/fill-form/${form.form_id}`)}
-                                    className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                                    className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 cursor-pointer"
                                 >
                                     Fill
                                 </button>
                                 <button 
                                     onClick={() => navigate(`/responses/${form.form_id}`)} 
-                                    className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 cursor-pointer"
                                 >
                                     Responses
                                 </button>
                                 <button 
                                     onClick={() => deleteForm(form.form_id)} 
-                                    className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                                    className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 cursor-pointer"
                                 >
                                     <FaTrash />
                                 </button>
@@ -153,21 +152,21 @@ const Dashboard = () => {
                 </div>
             )}
 
-            <h2 className="text-2xl font-bold mt-8 mb-4">Other Forms</h2>
+            <h2 className="text-2xl font-bold text-white-700 mt-8 mb-4">Other Forms</h2>
             {allForms.length === 0 ? (
-                <p className="text-gray-500">No forms found.</p>
+                <p className="text-white font-bold">No forms found.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {allForms.map((form) => (
-                        <div key={form.form_id} className="border border-gray-300 p-4 rounded-2xl shadow-lg">
-                            <h3 className="text-xl font-semibold">{form.form_name}</h3>
-                            <p className="text-gray-500">Created on : {new Date(form.created_at).toLocaleString()}</p>
-                            <p className="text-gray-500">
-                                Created by : <span>{formCreators[form.username] || "Unknown"}</span>
+                        <div key={form.form_id} className="border border-gray-300 p-4 rounded-2xl shadow-lg bg-transparent hover:shadow-xl transition-shadow duration-300">
+                            <h3 className="text-xl font-semibold text-white-700">{form.form_name}</h3>
+                            <p className="text-white-500">Created on: {new Date(form.created_at).toLocaleString()}</p>
+                            <p className="text-white-500">
+                                Created by: <span>{formCreators[form.username] || "Unknown"}</span>
                             </p>
                             <button
                                 onClick={() => navigate(`/fill-form/${form.form_id}`)}
-                                className="mt-2 cursor-pointer px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                                className="mt-2 cursor-pointer px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
                             >
                                 Fill
                             </button>
