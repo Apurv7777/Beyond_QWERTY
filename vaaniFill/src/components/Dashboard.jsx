@@ -114,7 +114,7 @@ const Dashboard = () => {
                 <h2 className="text-2xl font-bold text-white-700">Your Forms</h2>
                 <button
                     onClick={createNewForm}
-                    className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-md hover:from-purple-700 hover:to-pink-700 flex items-center"
+                    className="px-4 py-2 cursor-pointer bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-md hover:from-purple-700 hover:to-pink-700 flex items-center"
                 >
                     <FaPlus className="mr-2" /> Create New Form
                 </button>
