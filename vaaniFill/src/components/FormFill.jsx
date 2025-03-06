@@ -244,7 +244,7 @@ const FormFill = () => {
                             <button
                                 type="button"
                                 onClick={() => handleVoiceInput(field.name, field.type)}
-                                className={`p-3 rounded-full transition ${
+                                className={`p-3 rounded-full cursor-pointer transition ${
                                     listening[field.name] ? "bg-red-500 text-white" : "bg-gray-200 text-gray-600 hover:bg-gray-300"
                                 }`}
                             >
