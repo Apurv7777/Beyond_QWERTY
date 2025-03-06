@@ -47,50 +47,53 @@ const FormEditor = () => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-xl mt-10">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Create Form</h2>
+        <div className="max-w-3xl mx-auto min-h-[83vh] p-6 bg-transparent rounded-xl">
+            <h2 className="text-3xl font-bold text-center text-gray-300 mb-10">Create Form</h2>
+            <div className="shadow-2xl shadow-black p-6 rounded-lg">
             <input 
                 type="text" 
                 placeholder="Form Name" 
                 value={formName} 
                 onChange={(e) => setFormName(e.target.value)} 
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none mb-4"
+                className="w-full p-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none mb-2"
             />
             {fields.map((field, index) => (
-                <div key={index} className="flex items-center space-x-2 mb-2 p-2 border border-gray-200 rounded-lg bg-gray-50">
+                <div key={index} className="flex items-center space-x-2 mb-2 p-2 rounded-lg bg-transparent">
                     <input 
                         type="text" 
                         placeholder="Field Name" 
                         value={field.name} 
                         onChange={(e) => handleFieldChange(index, "name", e.target.value)} 
-                        className="flex-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                        className="flex-1 p-2 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
                     />
                     <select 
                         value={field.type} 
                         onChange={(e) => handleFieldChange(index, "type", e.target.value)} 
-                        className="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                        className="p-2 border cursor-pointer bg-transparent border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-400"
                     >
-                        <option value="text">Text</option>
-                        <option value="number">Number</option>
-                        <option value="textarea">Textarea</option>
-                        <option value="email">Email</option>
-                        <option value="date">Date</option>
-                        <option value="file">File Upload</option>
-                        <option value="tel">Telephone</option>
+                        <option className="text-black" value="text">Text</option>
+                        <option className="text-black" value="number">Number</option>
+                        <option className="text-black" value="textarea">Textarea</option>
+                        <option className="text-black" value="email">Email</option>
+                        <option className="text-black" value="date">Date</option>
+                        <option className="text-black" value="file">File Upload</option>
+                        <option className="text-black" value="tel">Telephone</option>
                     </select>
-                    <button onClick={() => deleteField(index)} className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600">Delete</button>
+                    <button onClick={() => deleteField(index)} className="bg-red-500 text-white cursor-pointer shadow-black shadow-md hover:shadow-2xl transition-all duration-300 py-2 px-4 rounded-lg ">Delete</button>
                 </div>
             ))}
-            <button onClick={addField} className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition mt-4 flex items-center space-x-2">
+            <button onClick={addField} 
+            className="bg-purple-600 cursor-pointer shadow-md shadow-black transition-all duration-300  hover:shadow-2xl text-white py-2 px-4 rounded-lg  mt-4 flex items-center space-x-2">
                 <FiPlus className="text-xl" /> <span>Add Field</span>
             </button>
             <button 
                 onClick={handleSubmit} 
                 disabled={!isFormValid()}
-                className={`w-full py-3 rounded-lg transition mt-4 ${!isFormValid() ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 text-white hover:bg-green-700'}`}
+                className={`w-full py-3 rounded-lg transition mt-4 ${!isFormValid() ? 'bg-gray-500 opacity-80 cursor-not-allowed' : 'bg-green-600 cursor-pointer shadow-md shadow-black hover:shadow-2xl transition-all duration-300 text-white hover:bg-green'}`}
             >
                 Save Form
             </button>
+        </div>
         </div>
     );
 };
