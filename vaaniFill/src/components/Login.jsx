@@ -53,7 +53,7 @@ const Login = ({ setStatus }) => {
                 setUser((prev) => ({ ...prev, [fieldName]: correctedValue }));
             }, (isListening) => {
                 setListening((prev) => ({ ...prev, [fieldName]: isListening }));
-            },fieldName);
+            }, fieldName);
 
             setRecorders(recorder);
         } else {
@@ -76,9 +76,9 @@ const Login = ({ setStatus }) => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-[90vh] bg-gray-100">
-            <div className="w-full max-w-lg p-8 space-y-6 bg-white rounded shadow-lg">
-                <h2 className="text-2xl font-bold text-center">Login</h2>
+        <div className="flex items-center justify-center min-h-[83vh] rounded-2xl bg-gradient-to-br from-green-400 via-blue-500 to-purple-600">
+            <div className="w-full max-w-lg p-8 space-y-6 rounded-lg shadow-2xl bg-gradient-to-br from-blue-400 via-purple-400">
+                <h2 className="text-3xl font-bold text-center text-gray-800">Login</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {/* Email Input with Voice */}
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
@@ -91,12 +91,12 @@ const Login = ({ setStatus }) => {
                             placeholder="Email"
                             onChange={(e) => handleChange("email", e.target.value)}
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500"
                         />
                         <button
                             type="button"
                             onClick={() => handleVoiceInput("email")}
-                            className="ml-2 text-gray-600"
+                            className="ml-2 text-gray-800 cursor-pointer"
                         >
                             {listening.email ? <FaMicrophone className="text-red-500" /> : <FaMicrophone />}
                         </button>
@@ -112,19 +112,19 @@ const Login = ({ setStatus }) => {
                             placeholder="Password"
                             onChange={(e) => handleChange("password", e.target.value)}
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500"
                         />
                         <button
                             type="button"
                             onClick={() => handleVoiceInput("password")}
-                            className="ml-2 text-gray-600"
+                            className="ml-2 text-gray-800 cursor-pointer"
                         >
                             {listening.password ? <FaMicrophone className="text-red-500" /> : <FaMicrophone />}
                         </button>
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="ml-2 absolute ml-99 text-gray-600"
+                            className="ml-2 absolute ml-98 text-gray-800"
                         >
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </button>
@@ -134,8 +134,8 @@ const Login = ({ setStatus }) => {
                     <div>
                         <button
                             type="submit"
-                            className="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                        >
+                            className="cursor-pointer w-full py-3 text-white  bg-gradient-to-br from-purple-400 via-blue-400 font-bold rounded-lg shadow-md shadow-black transition-all duration-300 hover:shadow-2xl"
+                            >   
                             Login
                         </button>
                     </div>
