@@ -7,4 +7,10 @@
   - [SQL](https://www.hackerrank.com/certificates/1b4103ba82c6)
 - [X] Task-5: Python and SQL Interview questions
   - [Colab](https://colab.research.google.com/drive/11BO4RiGAHL2Ea20i05khoOJX1fCtrSJy?usp=sharing)
+- [X] Task-6: Project
+  - Code :
+    - Frontend : [vaaniFill](./vaaniFill)
+    - Backend : [backend](./backend)
+  - [Deployment Link](https://beyond-qwerty.vercel.app)
+  - [Demo Link](https://drive.google.com/drive/folders/1Se5P3M0H2lLhc2FrhabsSIWj8r28BOpD?usp=sharing)
 
