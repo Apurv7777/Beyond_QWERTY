@@ -22,7 +22,7 @@ const Login = ({ setStatus }) => {
     }, []);
 
     const autoCorrectValue = (value, type) => {
-        value = value.trim(); // Remove unnecessary spaces
+        value = value.trim().toLowerCase(); // Remove unnecessary spaces
 
         if (type === "email") {
             // Ensure there is exactly one '@'
