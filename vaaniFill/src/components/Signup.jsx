@@ -152,7 +152,7 @@ const Signup = () => {
                     <div>
                         <button
                             type="submit"
-                            className="cursor-pointer w-full px-4 py-2 font-medium text-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-md hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                            className="cursor-pointer w-full py-3 text-white  bg-gradient-to-br from-purple-400 via-blue-400 font-bold rounded-lg shadow-md shadow-black transition-all duration-300 hover:shadow-2xl"
                         >
                             Signup
                         </button>
