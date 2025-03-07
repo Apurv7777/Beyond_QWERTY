@@ -44,7 +44,7 @@ const Dashboard = () => {
                 const response = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/forms/all-forms`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
-
+                console.log(response.data);
                 setAllForms(response.data);
             } catch (err) {
                 console.error("Error fetching all forms:", err);
@@ -52,33 +52,8 @@ const Dashboard = () => {
             }
         };
 
-        const fetchFormCreators = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                if (!token) {
-                    setError("User not authenticated. Please log in.");
-                    return;
-                }
-
-                const response = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/forms/form-creators`, {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
-
-                const creatorMap = {};
-                response.data.forEach(user => {
-                    creatorMap[user.id] = user.username;
-                });
-
-                setFormCreators(creatorMap);
-            } catch (err) {
-                console.error("Error fetching form creators:", err);
-                setError("Failed to load form creators.");
-            }
-        };
-
         fetchForms();
         fetchAllForms();
-        fetchFormCreators();
     }, []);
 
     const deleteForm = async (id) => {
@@ -114,7 +89,7 @@ const Dashboard = () => {
                 <h2 className="text-2xl font-bold text-white-700">Your Forms</h2>
                 <button
                     onClick={createNewForm}
-                    className="px-4 py-2 cursor-pointer bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-md hover:from-purple-700 hover:to-pink-700 flex items-center"
+                    className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-md hover:from-purple-700 hover:to-pink-700 flex items-center"
                 >
                     <FaPlus className="mr-2" /> Create New Form
                 </button>
@@ -162,7 +137,7 @@ const Dashboard = () => {
                             <h3 className="text-xl font-semibold text-white-700">{form.form_name}</h3>
                             <p className="text-white-500">Created on: {new Date(form.created_at).toLocaleString()}</p>
                             <p className="text-white-500">
-                                Created by: <span>{formCreators[form.username] || "Unknown"}</span>
+                                Created by: <span>{form.username || "Unknown"}</span>
                             </p>
                             <button
                                 onClick={() => navigate(`/fill-form/${form.form_id}`)}
