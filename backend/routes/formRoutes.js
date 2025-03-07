@@ -41,7 +41,12 @@ router.get("/all-forms", authMiddleware, async (req, res) => {
     const userId = req.user.id;
 
     try {
-        const selectQuery = "SELECT * FROM forms WHERE user_id != $1";
+        const selectQuery = `
+            SELECT forms.*, users.username 
+            FROM forms 
+            JOIN users ON forms.user_id = users.id 
+            WHERE forms.user_id != $1
+        `;
         const results = await db.query(selectQuery, [userId]);
         res.json(results.rows);
     } catch (error) {
@@ -85,22 +90,6 @@ router.get("/responses/:id", authMiddleware, async (req, res) => {
     } catch (error) {
         console.error("Database error:", error);
         res.status(500).json({ message: "Error fetching form responses" });
-    }
-});
-
-// 📌 GET /form-creators — Fetch usernames of form creators
-router.get("/form-creators", authMiddleware, async (req, res) => {
-    try {
-        const query = `
-            SELECT users.username 
-            FROM users 
-            INNER JOIN forms ON users.id = forms.user_id
-        `;
-        const result = await db.query(query);
-        res.json(result.rows);
-    } catch (error) {
-        console.error("Database error:", error);
-        res.status(500).json({ message: "Error fetching form creators" });
     }
 });
 
