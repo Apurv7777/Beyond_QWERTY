@@ -137,9 +137,11 @@ const FormFill = () => {
             const token = localStorage.getItem("token");
             const formName = form.form_name;
 
+            const { aiInput, ...filteredResponses } = responses;
+
             await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/forms/submit`, {
                 formName,
-                responses,
+                responses: filteredResponses,
             }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
