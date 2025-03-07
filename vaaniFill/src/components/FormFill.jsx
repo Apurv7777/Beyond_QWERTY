@@ -41,6 +41,7 @@ const FormFill = () => {
         value = value.trim(); // Remove unnecessary spaces
     
         if (type === "email") {
+            value=value.toLowerCase();
             value = value.replace(/\s+/g, ""); // Remove spaces within email
             value = value.replace(/gmailcom$/i, "gmail.com"); // Fix "gmailcom" typo
     
