@@ -22,9 +22,10 @@ const Login = ({ setStatus }) => {
     }, []);
 
     const autoCorrectValue = (value, type) => {
-        value = value.trim().toLowerCase(); // Remove unnecessary spaces
+        value = value.trim(); // Remove unnecessary spaces
 
         if (type === "email") {
+            value=value.toLowerCase();
             // Ensure there is exactly one '@'
             if (!value.includes("@")) {
                 value += "@gmail.com"; // Default to Gmail if no domain is provided
