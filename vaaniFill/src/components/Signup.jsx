@@ -26,6 +26,7 @@ const Signup = () => {
 
         if (type === "email") {
             // Ensure there is exactly one '@'
+            value=value.toLowerCase();
             if (!value.includes("@")) {
                 value += "@gmail.com"; // Default to Gmail if no domain is provided
             } else {
