@@ -18,7 +18,7 @@ router.post("/askgemini", async (req, res) => {
         Text: "${userInput}"
 
         Provide the result in **pure JSON format** without any markdown or explanations. If the field Date of Birth is in words, make it in "yyyy-mm-dd" format.
-        Make sure to not change the field names in the response.
+        Make sure to not change the field names in the response. Remove all special characters from contact number / phone number.
     `;
 
     try {
