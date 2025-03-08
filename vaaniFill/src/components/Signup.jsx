@@ -91,7 +91,7 @@ const Signup = () => {
                             placeholder="Username"
                             onChange={handleChange}
                             required
-                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+                            className="w-full px-3 py-2 mt-1 border border-black rounded-md shadow-sm focus:outline-none font-semibold sm:text-sm"
                         />
                         <button
                             type="button"
@@ -111,7 +111,7 @@ const Signup = () => {
                             placeholder="Email"
                             onChange={handleChange}
                             required
-                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+                            className="w-full px-3 py-2 mt-1 border border-black rounded-md shadow-sm focus:outline-none font-semibold sm:text-sm"
                         />
                         <button
                             type="button"
@@ -132,7 +132,7 @@ const Signup = () => {
                             placeholder="Password"
                             onChange={handleChange}
                             required
-                            className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+                            className="w-full px-3 py-2 mt-1 border border-black rounded-md shadow-sm focus:outline-none font-semibold sm:text-sm"
                         />
                         <button
                             type="button"
@@ -153,7 +153,7 @@ const Signup = () => {
                     <div>
                         <button
                             type="submit"
-                            className="cursor-pointer w-full py-3 text-white  bg-gradient-to-br from-purple-400 via-blue-400 font-bold rounded-lg shadow-md shadow-black transition-all duration-300 hover:shadow-2xl"
+                            className="cursor-pointer w-full py-3 text-gray-800  bg-gradient-to-br from-purple-400 via-blue-400 font-bold rounded-lg shadow-md shadow-black transition-all duration-300 hover:shadow-2xl"
                         >
                             Signup
                         </button>
