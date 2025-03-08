@@ -96,7 +96,7 @@ const Signup = () => {
                         <button
                             type="button"
                             onClick={() => handleVoiceInput("username")}
-                            className="ml-4 cursor-pointer text-gray-600"
+                            className="ml-4 cursor-pointer text-gray-800"
                         >
                             {listening.username ? <FaMicrophone className="text-red-500" /> : <FaMicrophone />}
                         </button>
@@ -116,7 +116,7 @@ const Signup = () => {
                         <button
                             type="button"
                             onClick={() => handleVoiceInput("email")}
-                            className="ml-4 cursor-pointer text-gray-600"
+                            className="ml-4 cursor-pointer text-gray-800"
                         >
                             {listening.email
                              ? <FaMicrophone className="text-red-500" /> : <FaMicrophone />}
@@ -137,14 +137,14 @@ const Signup = () => {
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute ml-81 text-gray-600"
+                            className="absolute ml-81 text-gray-800"
                         >
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </button>
                         <button
                             type="button"
                             onClick={() => handleVoiceInput("password")}
-                            className="ml-4 cursor-pointer text-gray-600"
+                            className="ml-4 cursor-pointer text-gray-800"
                         >
                             {listening.password
                              ? <FaMicrophone className="text-red-500" /> : <FaMicrophone />}
