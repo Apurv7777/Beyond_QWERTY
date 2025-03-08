@@ -92,7 +92,7 @@ const Login = ({ setStatus }) => {
                             placeholder="Email"
                             onChange={(e) => handleChange("email", e.target.value)}
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500"
+                            className="w-full px-3 py-2 border border-black rounded-md shadow-sm focus:outline-none font-semibold"
                         />
                         <button
                             type="button"
@@ -113,7 +113,7 @@ const Login = ({ setStatus }) => {
                             placeholder="Password"
                             onChange={(e) => handleChange("password", e.target.value)}
                             required
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500"
+                            className="w-full px-3 py-2 border border-black rounded-md shadow-sm focus:outline-none font-semibold"
                         />
                         <button
                             type="button"
@@ -135,7 +135,7 @@ const Login = ({ setStatus }) => {
                     <div>
                         <button
                             type="submit"
-                            className="cursor-pointer w-full py-3 text-white  bg-gradient-to-br from-purple-400 via-blue-400 font-bold rounded-lg shadow-md shadow-black transition-all duration-300 hover:shadow-2xl"
+                            className="cursor-pointer w-full py-3 text-gray-800  bg-gradient-to-br from-purple-400 via-blue-400 font-bold rounded-lg shadow-md shadow-black transition-all duration-300 hover:shadow-2xl"
                             >   
                             Login
                         </button>
